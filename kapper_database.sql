@@ -8,19 +8,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema kapperszaak
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema kapperszaak
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `kapperszaak` DEFAULT CHARACTER SET utf8 ;
+USE `kapperszaak` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`Medewerker`
+-- Table `kapperszaak`.`Medewerker`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Medewerker` (
+CREATE TABLE IF NOT EXISTS `kapperszaak`.`Medewerker` (
   `id` INT NOT NULL,
   `voornaam` VARCHAR(45) NOT NULL,
   `tussenvoegsel` VARCHAR(45) NULL,
@@ -31,9 +31,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Klant`
+-- Table `kapperszaak`.`Klant`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Klant` (
+CREATE TABLE IF NOT EXISTS `kapperszaak`.`Klant` (
   `id` INT NOT NULL,
   `voornaam` VARCHAR(45) NOT NULL,
   `tussenvoegsel` VARCHAR(45) NULL,
@@ -44,9 +44,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Specialiteit`
+-- Table `kapperszaak`.`Specialiteit`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Specialiteit` (
+CREATE TABLE IF NOT EXISTS `kapperszaak`.`Specialiteit` (
   `id` INT NOT NULL,
   `naam` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
@@ -54,9 +54,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Behandeling`
+-- Table `kapperszaak`.`Behandeling`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Behandeling` (
+CREATE TABLE IF NOT EXISTS `kapperszaak`.`Behandeling` (
   `Code` VARCHAR(4) NOT NULL,
   `naam` VARCHAR(45) NOT NULL,
   `duur` VARCHAR(45) NOT NULL,
@@ -66,9 +66,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Afspraak`
+-- Table `kapperszaak`.`Afspraak`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Afspraak` (
+CREATE TABLE IF NOT EXISTS `kapperszaak`.`Afspraak` (
   `Datum_tijd` DATETIME NOT NULL,
   `Klant_id` INT NOT NULL,
   `Medewerker_id` INT NOT NULL,
@@ -77,21 +77,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Afspraak` (
   INDEX `fk_Afspraak_Medewerker1_idx` (`Medewerker_id` ASC),
   CONSTRAINT `fk_Afspraak_Klant1`
     FOREIGN KEY (`Klant_id`)
-    REFERENCES `mydb`.`Klant` (`id`)
+    REFERENCES `kapperszaak`.`Klant` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Afspraak_Medewerker1`
     FOREIGN KEY (`Medewerker_id`)
-    REFERENCES `mydb`.`Medewerker` (`id`)
+    REFERENCES `kapperszaak`.`Medewerker` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Medewerker_has_specialiteit`
+-- Table `kapperszaak`.`Medewerker_has_specialiteit`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Medewerker_has_specialiteit` (
+CREATE TABLE IF NOT EXISTS `kapperszaak`.`Medewerker_has_specialiteit` (
   `specialiteit_id` INT NOT NULL,
   `medewerker_id` INT NOT NULL,
   PRIMARY KEY (`specialiteit_id`, `medewerker_id`),
@@ -99,21 +99,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Medewerker_has_specialiteit` (
   INDEX `fk_Specialiteit_has_Medewerker_Specialiteit_idx` (`specialiteit_id` ASC),
   CONSTRAINT `fk_Specialiteit_has_Medewerker_Specialiteit`
     FOREIGN KEY (`specialiteit_id`)
-    REFERENCES `mydb`.`Specialiteit` (`id`)
+    REFERENCES `kapperszaak`.`Specialiteit` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Specialiteit_has_Medewerker_Medewerker1`
     FOREIGN KEY (`medewerker_id`)
-    REFERENCES `mydb`.`Medewerker` (`id`)
+    REFERENCES `kapperszaak`.`Medewerker` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Afspraak_has_Behandeling`
+-- Table `kapperszaak`.`Afspraak_has_Behandeling`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Afspraak_has_Behandeling` (
+CREATE TABLE IF NOT EXISTS `kapperszaak`.`Afspraak_has_Behandeling` (
   `Afspraak_Klant_id` INT NOT NULL,
   `Afspraak_Datum_tijd` DATETIME NOT NULL,
   `Behandeling_Code` VARCHAR(4) NOT NULL,
@@ -122,12 +122,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Afspraak_has_Behandeling` (
   INDEX `fk_Afspraak_has_Behandeling_Afspraak1_idx` (`Afspraak_Klant_id` ASC, `Afspraak_Datum_tijd` ASC),
   CONSTRAINT `fk_Afspraak_has_Behandeling_Afspraak1`
     FOREIGN KEY (`Afspraak_Klant_id` , `Afspraak_Datum_tijd`)
-    REFERENCES `mydb`.`Afspraak` (`Klant_id` , `Datum_tijd`)
+    REFERENCES `kapperszaak`.`Afspraak` (`Klant_id` , `Datum_tijd`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Afspraak_has_Behandeling_Behandeling1`
     FOREIGN KEY (`Behandeling_Code`)
-    REFERENCES `mydb`.`Behandeling` (`Code`)
+    REFERENCES `kapperszaak`.`Behandeling` (`Code`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
