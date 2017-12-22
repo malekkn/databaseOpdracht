@@ -44,3 +44,8 @@ INSERT INTO `kapperszaak`.`afspraak` (`Datum_tijd`, `Klant_id`, `Medewerker_id`)
 INSERT INTO `kapperszaak`.`afspraak` (`Datum_tijd`, `Klant_id`, `Medewerker_id`) VALUES ('2018-01-01 12:30:00', '5', '5');
 INSERT INTO `kapperszaak`.`afspraak` (`Datum_tijd`, `Klant_id`, `Medewerker_id`) VALUES ('2018-02-01 09:30:00', '4', '2');
 
+
+
+
+#Afspraak_has_behandeling
+INSERT INTO `kapperszaak`.`afspraak_has_behandeling` (`Afspraak_Klant_id`, `Afspraak_Datum_tijd`, `Behandeling_Code`) VALUES ('2', '2018-01-01 12:00:00', 'DK');
