@@ -29,7 +29,18 @@ INSERT INTO `behandeling` (`code`, `naam`, 	`duur`, `prijs`) VALUES ('DPK','Prof
 
 #Medewerker
 INSERT INTO `Medewerker` (`id`, `voornaam`, `achternaam`, `telefoon`) VALUES (1, 'Bevin','Joincey',063326060);
-INSERT INTO `Medewerker` (`id`, `voornaam`, `achternaam`, `telefoon`) VALUES (2, ' Carlie', 'van der', ' Strangward', 0654325634);
-INSERT INTO `Medewerker` (`id`, `voornaam`, `achternaam`, `telefoon`) VALUES (3, ' Lisa', 'Crafter', 0674382913);
+INSERT INTO `Medewerker` (`id`, `voornaam`, `achternaam`, `telefoon`) VALUES (2, 'Carlie', 'van der', ' Strangward', 0654325634);
+INSERT INTO `Medewerker` (`id`, `voornaam`, `achternaam`, `telefoon`) VALUES (3, 'Lisa', 'Crafter', 0674382913);
 INSERT INTO `Medewerker` (`id`, `voornaam`, `achternaam`, `telefoon`) VALUES (4, 'Ivor', 'van der', 'Plas', 0678543923);
 INSERT INTO `Medewerker` (`id`, `voornaam`, `achternaam`, `telefoon`) VALUES (5, 'Etta', 'de', 'Brake', 0673542718);
+
+
+
+
+#afspraak
+INSERT INTO `kapperszaak`.`afspraak` (`Datum_tijd`, `Klant_id`, `Medewerker_id`) VALUES ('2018-01-01 12:00:00', '2', '4');
+INSERT INTO `kapperszaak`.`afspraak` (`Datum_tijd`, `Klant_id`, `Medewerker_id`) VALUES ('2018-01-01 11:00:00', '1', '3');
+INSERT INTO `kapperszaak`.`afspraak` (`Datum_tijd`, `Klant_id`, `Medewerker_id`) VALUES ('2018-01-01 10:00:00', '3', '1');
+INSERT INTO `kapperszaak`.`afspraak` (`Datum_tijd`, `Klant_id`, `Medewerker_id`) VALUES ('2018-01-01 12:30:00', '5', '5');
+INSERT INTO `kapperszaak`.`afspraak` (`Datum_tijd`, `Klant_id`, `Medewerker_id`) VALUES ('2018-02-01 09:30:00', '4', '2');
+
